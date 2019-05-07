@@ -1,28 +1,34 @@
 package rot4ry_Engine;
 
-import rot4ry_Engine.*;
+import rot4ry_Engine.Point;
+import rot4ry_Engine.Vector;
+import rot4ry_Engine.Wall;
+
 
 public class Map{
 
     private int dimensionA;
     private int dimensionB;
-    public Integer[][]map; 
-
-    public Player player;
-    private Enemy[]enemies;
-    private Item[]items;
+    private Integer[][]mapARRAY;      //how to return an array? 
     private Wall[]walls;
-
+    
     public Map(int a, int b){
         dimensionA = a;
         dimensionB = b;
-        map = new Integer[dimensionA][dimensionB];
-        this.fillMap();
-        this.printMap();
-        System.out.println();
-        player = new Player("Test", 5, 10);     
-        map[player.getX()][player.getY()]=1;
-        this.printMap();
+        mapARRAY = new Integer[dimensionA][dimensionB];
+        fillMap();
+    }
+
+    public void fillMap(){      
+        for(int i = 0; i<this.dimensionA; i++){
+            for(int j = 0; j<this.dimensionB; j++){
+                this.mapARRAY[i][j]=0;
+            }
+        }
+    }
+
+    public int getMapARRAY(int i, int j){
+        return mapARRAY[i][j];
     }
 
     public int getA(){
@@ -31,24 +37,5 @@ public class Map{
 
     public int getB(){
         return dimensionB;
-    }
-
-    public void fillMap(){
-        for(int i = 0; i<this.dimensionA; i++){
-            for(int j = 0; j<this.dimensionB; j++){
-                this.map[i][j]=0;
-            }
-        }
-    }
-
-    public void printMap(){
-        for(int i = 0; i<this.dimensionA; i++){
-            for(int j = 0; j<this.dimensionB; j++){
-                System.out.print(this.map[i][j]);
-            }
-            System.out.println();
-        }
-    }
+    }    
 }
-
-
